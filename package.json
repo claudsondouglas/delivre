@@ -1,0 +1,21 @@
+{
+  "name": "delivre",
+  "version": "1.0.0",
+  "description": "aplicação de delivery para pequenas empresas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "prisma": {
+    "schema": "src/infraestructure/database/prisma/schema.prisma"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.11.0",
+    "typescript": "^5.0.2"
+  },
+  "devDependencies": {
+    "prisma": "^4.11.0"
+  }
+}
