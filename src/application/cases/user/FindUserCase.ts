@@ -6,8 +6,6 @@ export default class FindUser {
     async execute(id: number): Promise<User|null> {
         const user = await this.userRepository.find(id);
 
-        console.log('findUser:', user);
-
         return user;
     }
 }

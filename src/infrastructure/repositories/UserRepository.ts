@@ -16,8 +16,6 @@ export default class UserRepository implements UserRepositoryInterface {
             },
         });
 
-        console.log('repositorio:', user);
-
         return user;
     }
 }
