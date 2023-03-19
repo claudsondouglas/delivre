@@ -1,12 +1,11 @@
 import UserRepositoryInterface from "@domain/repositories/UserRepositoryInterface";
 import User from "@entities/User";
 
-export default class FindUser {
+export default class CreateUser {
     constructor(private userRepository: UserRepositoryInterface) {}
 
-    async execute(id: number): Promise<User|null> {
-        const user = await this.userRepository.find(id);
-
-        return user;
+    async execute(user: User): Promise<User|null> {
+        const createdUser = await this.userRepository.create(user);
+        return createdUser;
     }
 }

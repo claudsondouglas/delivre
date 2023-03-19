@@ -8,6 +8,7 @@
       "@controllers/*": ["infrastructure/controllers/*"],
       "@repositories/*": ["infrastructure/repositories/*"],
       "@cases/*": ["application/cases/*"],
+      "@entities/*": ["domain/entities/*"],
       "@infrastructure/*": ["infrastructure/*"],
       "@domain/*": ["domain/*"],
       "@application/*": ["application/*"]
