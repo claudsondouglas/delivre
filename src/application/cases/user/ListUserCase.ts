@@ -6,6 +6,10 @@ export default class ListUser {
 
     async execute(): Promise<User[]|null> {
         const users = await this.userRepository.list();
+        
+        users.forEach((user: any) => {
+            delete user.password;
+        });
 
         return users;
     }

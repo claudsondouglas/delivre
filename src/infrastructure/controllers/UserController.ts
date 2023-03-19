@@ -7,14 +7,9 @@ import UpdateUser from "@cases/user/UpdateUserCase";
 import DeleteUser from "@cases/user/DeleteUserCase";
 
 export default class UserController {
-    private repository: UserRepository;
-
-    constructor() {
-        this.repository = new UserRepository();
-    }
-
     public async index(req: Request, res: Response) {
-        const users = await (new ListUser(this.repository)).execute();
+        const repository = new UserRepository();
+        const users = await (new ListUser(repository)).execute();
 
         return res.json(users);
     }
@@ -22,7 +17,8 @@ export default class UserController {
     public async show(req: Request, res: Response) {
         const id = parseInt(req.params.id);
 
-        const user = await (new FindUser(this.repository)).execute(id);
+        const repository = new UserRepository();
+        const user = await (new FindUser(repository)).execute(id);
 
         return res.json(user);
     }
@@ -30,7 +26,8 @@ export default class UserController {
     public async create(req: Request, res: Response) {
         const { name, email, password } = req.body;
 
-        const user = await (new CreateUser(this.repository)).execute({
+        const repository = new UserRepository();
+        const user = await (new CreateUser(repository)).execute({
             name,
             email,
             password,
@@ -45,7 +42,8 @@ export default class UserController {
         const { name, email, password } = req.body;
         const id = parseInt(req.params.id);
 
-        const user = await (new UpdateUser(this.repository)).execute(id, {
+        const repository = new UserRepository();
+        const user = await (new UpdateUser(repository)).execute(id, {
             name,
             email,
             password,
@@ -57,7 +55,8 @@ export default class UserController {
     public async delete(req: Request, res: Response) {
         const id = parseInt(req.params.id);
 
-        const deleted = await (new DeleteUser(this.repository)).execute(id);
+        const repository = new UserRepository();
+        const deleted = await (new DeleteUser(repository)).execute(id);
 
         if (deleted) {
             return res.status(204).send();
