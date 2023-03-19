@@ -4,6 +4,7 @@
   "description": "aplicação de delivery para pequenas empresas",
   "main": "index.js",
   "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "prisma": {
@@ -13,9 +14,12 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^4.11.0",
+    "@types/express": "^4.17.17",
+    "express": "^4.18.2",
     "typescript": "^5.0.2"
   },
   "devDependencies": {
-    "prisma": "^4.11.0"
+    "prisma": "^4.11.0",
+    "ts-node-dev": "^2.0.0"
   }
 }
