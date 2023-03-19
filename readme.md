@@ -1,0 +1,1 @@
+to tentando aprender sobre o prisma e clean arch, não ficará perfeito, muitas coisas eu nem sei como fazer, mas só se aprende tentando, né?
