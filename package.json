@@ -4,7 +4,7 @@
   "description": "aplicação de delivery para pequenas empresas",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules src/server.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --clear --transpile-only --ignore-watch node_modules src/server.ts",
     "test": "jest --watchAll --detectOpenHandles --forceExit --runInBand"
   },
   "prisma": {
@@ -17,11 +17,13 @@
     "@types/express": "^4.17.17",
     "bcrypt": "^5.1.0",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "typescript": "^5.0.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/jest": "^29.5.0",
+    "@types/jsonwebtoken": "^9.0.1",
     "jest": "^29.5.0",
     "prisma": "^4.11.0",
     "ts-jest": "^29.0.5",
