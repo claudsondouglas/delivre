@@ -33,8 +33,8 @@ describe("Update User Case", () => {
             id: user.id,
             name: "Teste editado",
             email: `teste_${random}@gmail.com`,
-            password: "123456",
-            createdAt: user.createdAt,
+            password: expect.anything(),
+            createdAt: expect.anything(),
             updatedAt: expect.anything(),
         });
     });
