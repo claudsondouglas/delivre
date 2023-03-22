@@ -1,5 +1,5 @@
 import AuthenticateInterface from "@domain/interfaces/AuthenticateInterface";
-import UserRepository from "@domain/repositories/UserRepositoryInterface";
+import UserRepository from "@domain/repositories/UserRepository.interface";
 import bcrypt from "bcrypt";
 import jsonwebtoken from "jsonwebtoken";
 //import User from "@entities/User";
