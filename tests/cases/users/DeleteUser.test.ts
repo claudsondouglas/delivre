@@ -1,5 +1,5 @@
 import DeleteUser from "@cases/user/DeleteUserCase";
-import UserRepository from "@repositories/UserRepository";
+import UserRepository from "@repositories/User.repository";
 import { PrismaClient } from "@prisma/client";
 
 describe("Delete User Case", () => {

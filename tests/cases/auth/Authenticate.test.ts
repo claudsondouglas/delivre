@@ -1,5 +1,5 @@
 import Authenticate from "@cases/auth/Authenticate.case";
-import UserRepository from "@repositories/UserRepository";
+import UserRepository from "@repositories/User.repository";
 
 describe("Authenticate", () => {
     let repository: UserRepository;
@@ -9,7 +9,7 @@ describe("Authenticate", () => {
     });
 
     it("should be able to authenticate", async () => {
-        expect(new Authenticate(repository).execute("Cassie85@hotmail.com", "123456")).resolves.toBeTruthy();
+        expect(new Authenticate(repository).execute("admin@email.com", "123456")).resolves.toBeTruthy();
     });
 
     it("should not be able to authenticate with wrong password", async () => {

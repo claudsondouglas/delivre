@@ -1,5 +1,5 @@
 import ListUser from "@cases/user/ListUserCase";
-import UserRepository from "@repositories/UserRepository";
+import UserRepository from "@repositories/User.repository";
 
 describe("List users", () => {
     const userRepository = new UserRepository;

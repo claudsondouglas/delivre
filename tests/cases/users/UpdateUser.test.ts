@@ -1,6 +1,6 @@
 
 import UpdateUser from "@cases/user/UpdateUserCase";
-import UserRepository from "@repositories/UserRepository";
+import UserRepository from "@repositories/User.repository";
 import User from "@entities/User";
 
 describe("Update User Case", () => {

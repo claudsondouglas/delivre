@@ -23,7 +23,7 @@ model Product {
   id        Int      @id @default(autoincrement())
   name      String
   description String @db.TinyText
-  price     Int
+  price     Float
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

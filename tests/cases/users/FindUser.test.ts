@@ -1,6 +1,6 @@
 
 import FindUser from "@cases/user/FindUserCase";
-import UserRepository from "@repositories/UserRepository";
+import UserRepository from "@repositories/User.repository";
 
 describe("FindUser Case", () => {
     const userRepository = new UserRepository;

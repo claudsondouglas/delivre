@@ -1,4 +1,4 @@
-import UserRepositoryInterface from "@domain/repositories/UserRepositoryInterface";
+import UserRepositoryInterface from "@domain/repositories/UserRepository.interface";
 
 export default class DeleteUser {
     constructor(private userRepository: UserRepositoryInterface) {}

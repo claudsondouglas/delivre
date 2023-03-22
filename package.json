@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn --clear --transpile-only --ignore-watch node_modules src/server.ts",
+    "db:seed": "ts-node-dev -r tsconfig-paths/register --clear --transpile-only --ignore-watch node_modules src/infrastructure/database/seeders/seed.ts",
     "test": "jest --watchAll --detectOpenHandles --forceExit --runInBand"
   },
   "prisma": {

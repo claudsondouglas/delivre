@@ -1,6 +1,6 @@
 
 import CreateUser from "@cases/user/CreateUserCase";
-import UserRepository from "@repositories/UserRepository";
+import UserRepository from "@repositories/User.repository";
 import User from "@entities/User";
 
 describe("Create User Case", () => {

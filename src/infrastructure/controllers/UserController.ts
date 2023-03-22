@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import UserRepository from "@repositories/UserRepository";
+import UserRepository from "@repositories/User.repository";
 import FindUser from "@cases/user/FindUserCase";
 import ListUser from "@cases/user/ListUserCase";
 import CreateUser from "@cases/user/CreateUserCase";

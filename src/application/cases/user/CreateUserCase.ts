@@ -1,5 +1,5 @@
 import HashPassword from "@cases/auth/HashPassword";
-import UserRepositoryInterface from "@domain/repositories/UserRepositoryInterface";
+import UserRepositoryInterface from "@domain/repositories/UserRepository.interface";
 import User from "@entities/User";
 
 export default class CreateUser {
