@@ -1,4 +1,4 @@
-import ListUser from "@cases/user/ListUserCase";
+import ListUser from "@cases/user/ListUser.case";
 import UserRepository from "@repositories/User.repository";
 
 describe("List users", () => {

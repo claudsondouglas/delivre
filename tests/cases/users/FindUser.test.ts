@@ -1,5 +1,5 @@
 
-import FindUser from "@cases/user/FindUserCase";
+import FindUser from "@cases/user/FindUser.case";
 import UserRepository from "@repositories/User.repository";
 
 describe("FindUser Case", () => {

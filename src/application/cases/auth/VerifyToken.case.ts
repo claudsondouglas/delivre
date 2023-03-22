@@ -1,10 +1,15 @@
-import { verify } from 'jsonwebtoken';
+import VerifyInterface from '@domain/interfaces/cases/auth/verify.interface';
+import { JwtPayload, verify } from 'jsonwebtoken';
 
-export default async function VerifyToken(token: string) {
-    try {
-        const decoded = verify(token, 'shhhhh');
-        return decoded;
-    } catch (error) {
-        throw new Error('Invalid token');
+class Verify implements VerifyInterface {
+    async execute(token: string) : Promise<string|JwtPayload> {
+        try {
+            const decoded = verify(token, 'shhhhh');
+            return decoded;
+        } catch (error) {
+            throw new Error('Invalid token');
+        }
     }
 }
+
+export default Verify;

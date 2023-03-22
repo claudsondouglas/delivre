@@ -1,10 +1,12 @@
 
-import CreateUser from "@cases/user/CreateUserCase";
+import CreateUser from "@cases/user/CreateUser.case";
 import UserRepository from "@repositories/User.repository";
 import User from "@entities/User";
+import Bcrypt from "@infrastructure/hashing/Bcrypt";
 
 describe("Create User Case", () => {
     const userRepository = new UserRepository;
+    const hasher = new Bcrypt;
 
     let createdUser : any;
 
@@ -24,7 +26,7 @@ describe("Create User Case", () => {
             updatedAt: new Date(),
         }
 
-        createdUser = await (new CreateUser(userRepository).execute(user));
+        createdUser = await (new CreateUser(userRepository, hasher).execute(user));
 
         expect(createdUser).toBeTruthy();
     });

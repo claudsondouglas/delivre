@@ -1,4 +1,4 @@
-import CreateUser from "@cases/user/CreateUserCase";
+import CreateUser from "@cases/user/CreateUser.case";
 import UserRepository from "@repositories/User.repository";
 
 export default class Seed {

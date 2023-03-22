@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 import UserRepository from "@repositories/User.repository";
-import FindUser from "@cases/user/FindUserCase";
-import ListUser from "@cases/user/ListUserCase";
-import CreateUser from "@cases/user/CreateUserCase";
-import UpdateUser from "@cases/user/UpdateUserCase";
-import DeleteUser from "@cases/user/DeleteUserCase";
+import ListUser from "@cases/user/ListUser.case";
+import FindUser from "@cases/user/FindUser.case";
+import CreateUser from "@cases/user/CreateUser.case";
+import UpdateUser from "@cases/user/UpdateUser.case";
+import DeleteUser from "@cases/user/DeleteUser.case";
+
 
 export default class UserController {
     public async index(req: Request, res: Response) {

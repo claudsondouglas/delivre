@@ -1,7 +1,8 @@
+import DeleteProductInterface from "@domain/interfaces/cases/product/DeleteProduct.interface";
 import ProductRepositoryInterface from "@domain/repositories/ProductRepository.interface";
 
-export default class DeleteProduct {
-    private productRepository: ProductRepositoryInterface;
+export default class DeleteProduct implements DeleteProductInterface {
+    productRepository: ProductRepositoryInterface;
 
     constructor(productRepository: ProductRepositoryInterface) {
         this.productRepository = productRepository;

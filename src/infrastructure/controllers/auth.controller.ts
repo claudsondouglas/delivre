@@ -1,5 +1,5 @@
 import Authenticate from "@cases/auth/Authenticate.case";
-import VerifyToken from "@cases/auth/VerifyToken.case";
+import Verify from "@cases/auth/VerifyToken.case";
 import UserRepository from "@repositories/User.repository";
 import { Request, Response } from "express";
 
@@ -35,11 +35,9 @@ class AuthController {
         const token = req.body.token;
 
         try {
-            const isValid = VerifyToken(token);
+            const isValid = await (new Verify()).execute(token);
 
-            return res.status(200).json({
-                isValid: isValid
-            });
+            return res.status(200).json(isValid);
         } catch (error: any) {
             return res.status(401).json({
                 message: error.message

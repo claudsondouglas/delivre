@@ -1,8 +1,9 @@
+import CreateProductInterface from "@domain/interfaces/cases/product/CreateProduct.interface";
 import ProductRepositoryInterface from "@domain/repositories/ProductRepository.interface";
 import Product from "@entities/Product";
 
-export default class CreateProduct {
-    private productRepository: ProductRepositoryInterface;
+export default class CreateProduct implements CreateProductInterface {
+    productRepository: ProductRepositoryInterface;
 
     constructor(productRepository: ProductRepositoryInterface) {
         this.productRepository = productRepository;

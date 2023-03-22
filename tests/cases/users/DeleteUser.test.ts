@@ -1,4 +1,4 @@
-import DeleteUser from "@cases/user/DeleteUserCase";
+import DeleteUser from "@cases/user/DeleteUser.case";
 import UserRepository from "@repositories/User.repository";
 import { PrismaClient } from "@prisma/client";
 
