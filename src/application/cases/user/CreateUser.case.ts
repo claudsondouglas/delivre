@@ -1,7 +1,8 @@
+import CreateUserInterface from "@domain/interfaces/cases/users/CreateUser.interface";
 import UserRepositoryInterface from "@domain/repositories/UserRepository.interface";
-import User from "@entities/User";
+import User from "@entities/User.entity";
 
-export default class CreateUser {
+export default class CreateUser implements CreateUserInterface {
     constructor(private userRepository: UserRepositoryInterface, private hasher: PasswordHasherInterface) {}
 
     async execute(user: User): Promise<User|null> {

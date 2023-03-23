@@ -1,6 +1,6 @@
 import UpdateProductInterface from "@domain/interfaces/cases/product/UpdateProduct.interface";
 import ProductRepositoryInterface from "@domain/repositories/ProductRepository.interface";
-import Product from "@entities/Product";
+import Product from "@entities/Product.entity";
 
 export default class UpdateProduct implements UpdateProductInterface {
     productRepository: ProductRepositoryInterface;

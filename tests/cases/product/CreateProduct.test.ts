@@ -1,5 +1,5 @@
 import CreateProduct from "@cases/product/CreateProduct.case";
-import Product from "@entities/Product";
+import Product from "@entities/Product.entity";
 import ProductRepository from "@repositories/Product.respository";
 
 describe("Create Product", () => {

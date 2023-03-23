@@ -1,6 +1,6 @@
 import FindProductInterface from "@domain/interfaces/cases/product/FindProduct.interface";
 import ProductRepositoryInterface from "@domain/repositories/ProductRepository.interface";
-import Product from "@entities/Product";
+import Product from "@entities/Product.entity";
 
 export default class FindProduct implements FindProductInterface {
     productRepository: ProductRepositoryInterface;

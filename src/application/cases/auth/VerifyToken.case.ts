@@ -1,4 +1,4 @@
-import VerifyInterface from '@domain/interfaces/cases/auth/verify.interface';
+import VerifyInterface from '@domain/interfaces/cases/auth/Verify.interface';
 import TokenizerInterface from '@domain/interfaces/Tokenizer.interface';
 
 class Verify implements VerifyInterface {

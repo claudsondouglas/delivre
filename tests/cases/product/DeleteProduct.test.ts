@@ -1,6 +1,6 @@
 import CreateProduct from "@cases/product/CreateProduct.case";
 import DeleteProduct from "@cases/product/DeleteProduct.case";
-import Product from "@entities/Product";
+import Product from "@entities/Product.entity";
 import ProductRepository from "@repositories/Product.respository";
 
 describe("Delete Product", () => {

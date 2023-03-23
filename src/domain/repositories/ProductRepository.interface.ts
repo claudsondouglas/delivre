@@ -1,4 +1,4 @@
-import Product from '@entities/Product';
+import Product from '@entities/Product.entity';
 
 export default interface ProductRepositoryInterface {
     list(): Promise<Product[]>;

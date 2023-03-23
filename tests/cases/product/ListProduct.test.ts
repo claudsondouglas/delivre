@@ -1,7 +1,7 @@
 import CreateProduct from "@cases/product/CreateProduct.case";
 import FindProduct from "@cases/product/FindProduct.case";
 import ListProduct from "@cases/product/ListProduct.case";
-import Product from "@entities/Product";
+import Product from "@entities/Product.entity";
 import ProductRepository from "@repositories/Product.respository";
 
 describe("Create Product", () => {

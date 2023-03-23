@@ -1,6 +1,6 @@
 import CreateProductInterface from "@domain/interfaces/cases/product/CreateProduct.interface";
 import ProductRepositoryInterface from "@domain/repositories/ProductRepository.interface";
-import Product from "@entities/Product";
+import Product from "@entities/Product.entity";
 
 export default class CreateProduct implements CreateProductInterface {
     productRepository: ProductRepositoryInterface;

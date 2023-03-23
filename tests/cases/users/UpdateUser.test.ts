@@ -1,7 +1,7 @@
 
 import UpdateUser from "@cases/user/UpdateUser.case";
 import UserRepository from "@repositories/User.repository";
-import User from "@entities/User";
+import User from "@entities/User.entity";
 import Bcrypt from "@infrastructure/hashing/Bcrypt";
 
 describe("Update User Case", () => {

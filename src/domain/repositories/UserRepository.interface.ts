@@ -1,4 +1,4 @@
-import User from "@entities/User";
+import User from "@entities/User.entity";
 
 export default interface UserRepository {
     list(): Promise<User[]>;
