@@ -1,15 +1,17 @@
-import TokenInterface from "@domain/interfaces/Token.interface";
-import jsonwebtoken from "jsonwebtoken";
+import TokenInterface from "@domain/interfaces/Tokenizer.interface";
+import { sign, verify } from "jsonwebtoken";
 
 class Jwt implements TokenInterface {
     async generate(data: object): Promise<string> {
-        return jsonwebtoken.sign(data, 'shhhhh', {
+        return sign(data, 'shhhhh', {
             expiresIn: '1d'
         });
     }
     
-    verify(token: string): Promise<any> {
-        throw new Error("Method not implemented.");
+    async verify(token: string): Promise<any> {
+        const decoded = verify(token, 'shhhhh');
+
+        return decoded;
     }
 }
 

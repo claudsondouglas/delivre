@@ -1,10 +1,13 @@
 import VerifyInterface from '@domain/interfaces/cases/auth/verify.interface';
-import { JwtPayload, verify } from 'jsonwebtoken';
+import TokenizerInterface from '@domain/interfaces/Tokenizer.interface';
 
 class Verify implements VerifyInterface {
-    async execute(token: string) : Promise<string|JwtPayload> {
+    constructor(private tokenizer: TokenizerInterface) {}
+
+    async execute(token: string) : Promise<string|object> {
         try {
-            const decoded = verify(token, 'shhhhh');
+            const decoded = await this.tokenizer.verify(token);
+
             return decoded;
         } catch (error) {
             throw new Error('Invalid token');

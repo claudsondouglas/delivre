@@ -1,6 +1,4 @@
-import { JwtPayload } from "jsonwebtoken";
-
 interface VerifyInterface {
-    execute(token: string): Promise<string|JwtPayload>;
+    execute(token: string): Promise<string|object>;
 }
 export default VerifyInterface;

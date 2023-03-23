@@ -1,5 +1,7 @@
 import Authenticate from "@cases/auth/Authenticate.case";
 import Verify from "@cases/auth/VerifyToken.case";
+import Jwt from "@infrastructure/cryptography/Jwt";
+import Bcrypt from "@infrastructure/hashing/Bcrypt";
 import UserRepository from "@repositories/User.repository";
 import { Request, Response } from "express";
 
@@ -8,12 +10,14 @@ class AuthController {
         const email = req.body.email;
         const password = req.body.password;
         const repository = new UserRepository();
+        const token = new Jwt();
+        const hasher = new Bcrypt();
 
         try {
-            const token = await (new Authenticate(repository)).execute(email, password);
+            const userToken = await (new Authenticate(repository, hasher, token)).execute(email, password);
 
             return res.json({
-                token: token,
+                token: userToken,
                 expiresIn: 86400
             });
         } catch (error: any) {
@@ -33,9 +37,10 @@ class AuthController {
 
     async verify(req: Request, res: Response) {
         const token = req.body.token;
+        const tokenizer = new Jwt();
 
         try {
-            const isValid = await (new Verify()).execute(token);
+            const isValid = await (new Verify(tokenizer)).execute(token);
 
             return res.status(200).json(isValid);
         } catch (error: any) {
