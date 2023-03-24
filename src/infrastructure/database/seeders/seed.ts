@@ -1,4 +1,5 @@
 import CreateUser from "@cases/user/CreateUser.case";
+import Bcrypt from "@infrastructure/hashing/Bcrypt";
 import UserRepository from "@repositories/User.repository";
 
 export default class Seed {
@@ -7,8 +8,9 @@ export default class Seed {
     }
     
     protected async seed(): Promise<void> {
+        const hasher = new Bcrypt;
         const userRepository = new UserRepository();
-        new CreateUser(userRepository).execute({
+        new CreateUser(userRepository, hasher).execute({
             name: "admin",
             email: "admin@email.com",
             password: "123456",

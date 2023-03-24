@@ -8,52 +8,92 @@ import ProductRepository from "@repositories/Product.respository";
 import { Request, Response } from "express";
 
 class ProductController {
-    constructor(private productRepository: ProductRepository) {}
-
     async index(req: Request, res: Response) {
-        const products = await new ListProduct(this.productRepository).execute();
+        const repository = new ProductRepository();
+        const products = await new ListProduct(repository).execute();
+
+        if (products.length === 0) {
+            return res.status(404).json({ message: 'No products found' });
+        }
 
         return res.json(products);
     }
 
     async show(req: Request, res: Response) {
         const id = parseInt(req.params.id);
+        let product;
+        try {
+            const repository = new ProductRepository();
+            product = await new FindProduct(repository).execute(id);
+        } catch (err) {
+            return res.status(500).json({ message: 'An error occurred' });
+        }
 
-        const product = await new FindProduct(this.productRepository).execute(id);
+        if (!product) {
+            return res.status(404).json({ message: 'Product not found' });
+        }
 
         return res.json(product);
     }
 
     async store(req: Request, res: Response) {
-        const product : Product = {
+        const product: Product = {
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
         }
 
-        const newProduct = await new CreateProduct(this.productRepository).execute(product);
+        if (!product.name || !product.description || !product.price) {
+            return res.status(400).json({
+                message: "Invalid product data.",
+            });
+        }
 
-        return res.json(newProduct);
+        const repository = new ProductRepository();
+        try {
+            const newProduct = await new CreateProduct(repository).execute(product);
+            return res.json(newProduct);
+        } catch (error: any) {
+            return res.status(400).json({
+                message: error.message,
+            });
+        }
     }
 
     async update(req: Request, res: Response) {
         const id = parseInt(req.params.id);
 
-        const product : Product = {
+        const product: Product = {
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
         }
 
-        const updatedProduct = await new UpdateProduct(this.productRepository).execute(id, product);
+        const repository = new ProductRepository();
+        const updateProduct = new UpdateProduct(repository);
 
-        return res.json(updatedProduct);
+        try {
+            const updatedProduct = await updateProduct.execute(id, product);
+
+            return res.json(updatedProduct);
+        } catch (err: any) {
+            return res.status(400).json({ error: err.message });
+        }
     }
 
     async delete(req: Request, res: Response) {
         const id = parseInt(req.params.id);
 
-        const deletedProduct = await new DeleteProduct(this.productRepository).execute(id);
+        if (Number.isNaN(id)) {
+            return res.status(400).json({ error: 'Invalid product ID' });
+        }
+
+        const repository = new ProductRepository();
+        const deletedProduct = await new DeleteProduct(repository).execute(id);
+
+        if (!deletedProduct) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
 
         return res.json(deletedProduct);
     }
