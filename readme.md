@@ -1,5 +1,5 @@
 # Delivre
-![Capa](https://ik.imagekit.io/claudsondev/delivre/apresenta%C3%A7%C3%A3o/Capa_Back.jpg?updatedAt=1682391411621)
+![Capa](https://ik.imagekit.io/claudsondev/delivre/apresenta%C3%A7%C3%A3o/Capa_Back__2___1_.jpg?updatedAt=1682391711745)
 
 
 ![Node JS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white) ![ExpressJS](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white) ![JWT](https://img.shields.io/badge/JWT-DD0022?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white) ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
