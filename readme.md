@@ -15,6 +15,10 @@ A grande vantagens de usar o Delivre é escapar das taxas abusivas cobradas pelo
 ### VERSÃO 1.0.0
 O objetivo da primeira versão da aplicação é criar um MVP onde o usuário pode cadastrar produtos e vendê-los através do pedido via WhatsApp. A aplicação é desenvolvida usando TypeScript, MySQL, Next JS, Express e Prisma, seguindo a arquitetura limpa e com testes unitários.
 
+✅ Sistema: https://github.com/claudsondouglas/delivre<br/>
+💪 App: https://github.com/claudsondouglas/delivre-app<br/>
+⏳ Painel: https://github.com/claudsondouglas/delivre-painel
+
 Além disso, a aplicação conta com um painel de administração para a criação de produtos que serão mostrados na página inicial. Para acessar o painel é necessário fazer login com JWT e as informações dos usuários serão armazenadas com e-mail e senha.
 
 Na página inicial da aplicação, os produtos cadastrados são listados e há um carrinho de compras onde o usuário pode selecionar os produtos que deseja comprar. Após selecionar os produtos, a aplicação solicita informações como endereço e tipo de pagamento, que pode ser feito via cartão, Pix ou dinheiro. Por meio dessa primeira versão, é possível realizar vendas de forma eficiente e prática, oferecendo uma experiência de compra agradável para os clientes.
