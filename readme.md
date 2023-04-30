@@ -17,6 +17,7 @@ O objetivo da primeira versão da aplicação é criar um MVP onde o usuário po
 
 ✅ Sistema: https://github.com/claudsondouglas/delivre<br/>
 💪 App: https://github.com/claudsondouglas/delivre-app<br/>
+🌎 [delivre.claudson.dev](https://delivre.claudson.dev)
 ⏳ Painel: https://github.com/claudsondouglas/delivre-painel
 
 Além disso, a aplicação conta com um painel de administração para a criação de produtos que serão mostrados na página inicial. Para acessar o painel é necessário fazer login com JWT e as informações dos usuários serão armazenadas com e-mail e senha.
