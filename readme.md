@@ -4,6 +4,8 @@
 
 ![Node JS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white) ![ExpressJS](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white) ![JWT](https://img.shields.io/badge/JWT-DD0022?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white) ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
 
+🌎 [delivre.claudson.dev](https://delivre.claudson.dev)
+
 Delivre é uma solução digital de cardápio projetada para ajudar pequenas empresas a melhorar a eficiência de seus processos de atendimento ao cliente. Com ele, as empresas podem disponibilizar seus cardápios de forma digital, permitindo que os clientes façam seus pedidos de maneira rápida e fácil sem precisar esperar pelo atendimento de um atendente.
 
 Além disso, ele também calcula automaticamente o valor do pedido, o que ajuda a agilizar ainda mais o processo de atendimento e permite que os atendentes se concentrem em outras tarefas importantes, como garantir que os clientes recebam o melhor serviço possível.
@@ -17,7 +19,6 @@ O objetivo da primeira versão da aplicação é criar um MVP onde o usuário po
 
 ✅ Sistema: https://github.com/claudsondouglas/delivre<br/>
 💪 App: https://github.com/claudsondouglas/delivre-app<br/>
-🌎 [delivre.claudson.dev](https://delivre.claudson.dev)
 ⏳ Painel: https://github.com/claudsondouglas/delivre-painel
 
 Além disso, a aplicação conta com um painel de administração para a criação de produtos que serão mostrados na página inicial. Para acessar o painel é necessário fazer login com JWT e as informações dos usuários serão armazenadas com e-mail e senha.
