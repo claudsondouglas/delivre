@@ -8,7 +8,7 @@ const controller = new ProductController();
 productRouter.get('/', controller.index);
 productRouter.get('/:id', controller.show, AuthMiddleware);
 productRouter.post('/', controller.store, AuthMiddleware);
-productRouter.put('/:id', controller.update, AuthMiddleware);
+productRouter.patch('/:id', controller.update, AuthMiddleware);
 productRouter.delete('/:id', controller.delete, AuthMiddleware);
 
 export default productRouter;

@@ -3,10 +3,14 @@ import Jwt from "@infrastructure/cryptography/Jwt"
 import { NextFunction, Request, Response } from "express"
 
 export default function AuthMiddleware(req: Request, res: Response, next: NextFunction) {
-    const token = req.headers.authorization
+    let token = req.headers.authorization as string;
 
     if (!token) {
         return res.status(401).json({ message: "Unauthorized" })
+    }
+
+    if (token) {
+        token = token.replace("Bearer ", "")
     }
 
     const tokenizer = new Jwt;
