@@ -5,38 +5,37 @@ import ListProduct from "@cases/product/ListProduct.case";
 import UpdateProduct from "@cases/product/UpdateProduct.case";
 import Product from "@entities/Product.entity";
 import ProductRepository from "@repositories/Product.respository";
-import { Request, Response } from "express";
 
 class ProductController {
-    async index(req: Request, res: Response) {
+    async index(req: any, reply: any) {
         const repository = new ProductRepository();
         const products = await new ListProduct(repository).execute();
 
         if (products.length === 0) {
-            return res.status(404).json({ message: 'No products found' });
+            return reply.code(404).send({ message: 'No products found' });
         }
 
-        return res.json(products);
+        return reply.send(products);
     }
 
-    async show(req: Request, res: Response) {
+    async show(req: any, reply: any) {
         const id = parseInt(req.params.id);
         let product;
         try {
             const repository = new ProductRepository();
             product = await new FindProduct(repository).execute(id);
         } catch (err) {
-            return res.status(500).json({ message: 'An error occurred' });
+            return reply.code(500).send({ message: 'An error occurred' });
         }
 
         if (!product) {
-            return res.status(404).json({ message: 'Product not found' });
+            return reply.code(404).send({ message: 'Product not found' });
         }
 
-        return res.json(product);
+        return reply.send(product);
     }
 
-    async store(req: Request, res: Response) {
+    async store(req: any, reply: any) {
         const product: Product = {
             name: req.body.name,
             description: req.body.description,
@@ -44,7 +43,7 @@ class ProductController {
         }
 
         if (!product.name || !product.description || !product.price) {
-            return res.status(400).json({
+            return reply.code(400).send({
                 message: "Invalid product data.",
             });
         }
@@ -52,15 +51,15 @@ class ProductController {
         const repository = new ProductRepository();
         try {
             const newProduct = await new CreateProduct(repository).execute(product);
-            return res.json(newProduct);
+            return reply.send(newProduct);
         } catch (error: any) {
-            return res.status(400).json({
+            return reply.code(400).send({
                 message: error.message,
             });
         }
     }
 
-    async update(req: Request, res: Response) {
+    async update(req: any, reply: any) {
         const id = parseInt(req.params.id);
 
         const product: Product = {
@@ -75,27 +74,27 @@ class ProductController {
         try {
             const updatedProduct = await updateProduct.execute(id, product);
 
-            return res.json(updatedProduct);
+            return reply.send(updatedProduct);
         } catch (err: any) {
-            return res.status(400).json({ error: err.message });
+            return reply.code(400).send({ error: err.message });
         }
     }
 
-    async delete(req: Request, res: Response) {
+    async delete(req: any, reply: any) {
         const id = parseInt(req.params.id);
 
         if (Number.isNaN(id)) {
-            return res.status(400).json({ error: 'Invalid product ID' });
+            return reply.code(400).send({ error: 'Invalid product ID' });
         }
 
         const repository = new ProductRepository();
         const deletedProduct = await new DeleteProduct(repository).execute(id);
 
         if (!deletedProduct) {
-            return res.status(404).json({ error: 'Product not found' });
+            return reply.code(404).send({ error: 'Product not found' });
         }
 
-        return res.json(deletedProduct);
+        return reply.send(deletedProduct);
     }
 }
 

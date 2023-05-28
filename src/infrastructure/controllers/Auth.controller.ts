@@ -3,10 +3,9 @@ import Verify from "@cases/auth/VerifyToken.case";
 import Jwt from "@infrastructure/cryptography/Jwt";
 import Bcrypt from "@infrastructure/hashing/Bcrypt";
 import UserRepository from "@repositories/User.repository";
-import { Request, Response } from "express";
 
 class AuthController {
-    async login(req: Request, res: Response) {
+    async login(req: any, reply: any) {
         const email = req.body.email;
         const password = req.body.password;
         const repository = new UserRepository();
@@ -16,35 +15,35 @@ class AuthController {
         try {
             const userToken = await (new Authenticate(repository, hasher, token)).execute(email, password);
 
-            return res.json({
+            return reply.send({
                 token: userToken,
                 expiresIn: 86400
             });
         } catch (error: any) {
             if (error.message === "User not found") {
-                return res.status(404).json({
+                return reply.code(404).send({
                     message: error.message
                 });
             }
 
             if (error.message === "Password does not match") {
-                return res.status(401).json({
+                return reply.code(401).send({
                     message: error.message
                 });
             }
         }
     }
 
-    async verify(req: Request, res: Response) {
+    async verify(req: any, reply: any) {
         const token = req.body.token;
         const tokenizer = new Jwt();
 
         try {
             const isValid = await (new Verify(tokenizer)).execute(token);
 
-            return res.status(200).json(isValid);
+            return reply.code(200).send(isValid);
         } catch (error: any) {
-            return res.status(401).json({
+            return reply.code(401).send({
                 message: error.message
             });
         }

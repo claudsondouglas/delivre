@@ -8,23 +8,23 @@ import DeleteUser from "@cases/user/DeleteUser.case";
 
 
 export default class UserController {
-    public async index(req: Request, res: Response) {
+    public async index(req: any, reply: any) {
         const repository = new UserRepository();
         const users = await (new ListUser(repository)).execute();
 
-        return res.json(users);
+        return reply.send(users);
     }
 
-    public async show(req: Request, res: Response) {
+    public async show(req: any, reply: any) {
         const id = parseInt(req.params.id);
 
         const repository = new UserRepository();
         const user = await (new FindUser(repository)).execute(id);
 
-        return res.json(user);
+        return reply.send(user);
     }
 
-    public async create(req: Request, res: Response) {
+    public async create(req: any, reply: any) {
         const { name, email, password } = req.body;
 
         const repository = new UserRepository();
@@ -36,10 +36,10 @@ export default class UserController {
             updatedAt: new Date(),
         });
 
-        return res.json(user);
+        return reply.send(user);
     }
 
-    public async update(req: Request, res: Response) {
+    public async update(req: any, reply: any) {
         const { name, email, password } = req.body;
         const id = parseInt(req.params.id);
 
@@ -50,19 +50,19 @@ export default class UserController {
             password,
         });
 
-        return res.json(user);
+        return reply.send(user);
     }
 
-    public async delete(req: Request, res: Response) {
+    public async delete(req: any, reply: any) {
         const id = parseInt(req.params.id);
 
         const repository = new UserRepository();
         const deleted = await (new DeleteUser(repository)).execute(id);
 
         if (deleted) {
-            return res.status(204).send();
+            return reply.status(204).send();
         }
 
-        return res.status(404).send();
+        return reply.status(404).send();
     }
 }
