@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
 import UserRepository from "@repositories/User.repository";
 import ListUser from "@cases/user/ListUser.case";
-import FindUser from "@cases/user/FindUser.case";
 import CreateUser from "@cases/user/CreateUser.case";
 import UpdateUser from "@cases/user/UpdateUser.case";
 import DeleteUser from "@cases/user/DeleteUser.case";
+import FindUserBySlug from "@cases/user/FindUserBySlug.case";
+import Bcrypt from "@infrastructure/hashing/Bcrypt";
 
 
 export default class UserController {
@@ -16,21 +16,23 @@ export default class UserController {
     }
 
     public async show(req: any, reply: any) {
-        const id = parseInt(req.params.id);
+        const slug = req.params.slug;
 
         const repository = new UserRepository();
-        const user = await (new FindUser(repository)).execute(id);
+        const user = await (new FindUserBySlug(repository)).execute(slug);
 
         return reply.send(user);
     }
 
     public async create(req: any, reply: any) {
-        const { name, email, password } = req.body;
+        const { slug, name, email, password } = req.body;
 
         const repository = new UserRepository();
-        const user = await (new CreateUser(repository)).execute({
+        const hasher = new Bcrypt();
+        const user = await (new CreateUser(repository, hasher)).execute({
             name,
             email,
+            slug,
             password,
             createdAt: new Date(),
             updatedAt: new Date(),
@@ -42,9 +44,9 @@ export default class UserController {
     public async update(req: any, reply: any) {
         const { name, email, password } = req.body;
         const id = parseInt(req.params.id);
-
+        const hasher = new Bcrypt();
         const repository = new UserRepository();
-        const user = await (new UpdateUser(repository)).execute(id, {
+        const user = await (new UpdateUser(repository, hasher)).execute(id, {
             name,
             email,
             password,

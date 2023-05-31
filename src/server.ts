@@ -3,7 +3,9 @@ import { join } from 'path'
 import fastify from 'fastify'
 import cors from '@fastify/cors'
 
-const app = fastify()
+const app = fastify({
+  logger: true
+})
 app.register(cors, { 
   origin: '*',
 })

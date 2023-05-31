@@ -2,14 +2,16 @@ import CreateProduct from "@cases/product/CreateProduct.case";
 import DeleteProduct from "@cases/product/DeleteProduct.case";
 import FindProduct from "@cases/product/FindProduct.case";
 import ListProduct from "@cases/product/ListProduct.case";
+import ListUserProduct from "@cases/product/ListUserProduct.case";
 import UpdateProduct from "@cases/product/UpdateProduct.case";
 import Product from "@entities/Product.entity";
 import ProductRepository from "@repositories/Product.respository";
 
 class ProductController {
     async index(req: any, reply: any) {
+        const user = parseInt(req.params.id);
         const repository = new ProductRepository();
-        const products = await new ListProduct(repository).execute();
+        const products = await new ListUserProduct(repository).execute(user);
 
         if (products.length === 0) {
             return reply.code(404).send({ message: 'No products found' });
@@ -20,6 +22,7 @@ class ProductController {
 
     async show(req: any, reply: any) {
         const id = parseInt(req.params.id);
+        
         let product;
         try {
             const repository = new ProductRepository();
@@ -40,6 +43,7 @@ class ProductController {
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
+            userId: req.user.id
         }
 
         if (!product.name || !product.description || !product.price) {

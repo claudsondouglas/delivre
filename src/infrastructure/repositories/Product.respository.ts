@@ -4,7 +4,7 @@ import { PrismaClient } from '@prisma/client';
 
 class ProductRepository implements ProductRepositoryInterface {
     private prisma: PrismaClient;
-    
+
     constructor() {
         this.prisma = new PrismaClient();
     }
@@ -12,8 +12,19 @@ class ProductRepository implements ProductRepositoryInterface {
     async list(): Promise<Product[]> {
         const products = this.prisma.product.findMany();
 
-        return products;
+        return products as any;
     }
+
+    async listByUser(id: number): Promise<Product[]> {
+        const products = this.prisma.product.findMany({
+            where: {
+                userId: id
+            }
+        });
+
+        return products as any;
+    }
+
 
     async find(id: number): Promise<Product | null> {
         const product = await this.prisma.product.findUnique({
@@ -21,8 +32,8 @@ class ProductRepository implements ProductRepositoryInterface {
                 id: id,
             },
         });
-        
-        return product;
+
+        return product as Product;
     }
 
     async create(product: Product): Promise<Product> {
@@ -31,10 +42,11 @@ class ProductRepository implements ProductRepositoryInterface {
                 name: product.name,
                 description: product.description,
                 price: product.price,
+                userId: product.userId
             },
         });
 
-        return newProduct;
+        return newProduct as Product;
     }
 
     async update(id: number, product: Product): Promise<Product> {
@@ -49,7 +61,7 @@ class ProductRepository implements ProductRepositoryInterface {
             },
         });
 
-        return updatedProduct;
+        return updatedProduct as Product;
     }
 
     async delete(id: number): Promise<boolean> {

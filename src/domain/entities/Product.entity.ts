@@ -5,6 +5,8 @@ interface Product {
     price: number;
     createdAt?: Date;
     updatedAt?: Date;
+    user?: any;
+    userId?: number;
 }
 
 export default Product;

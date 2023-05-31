@@ -7,6 +7,7 @@ export default class CreateUser implements CreateUserInterface {
 
     async execute(user: User): Promise<User|null> {
         const createdUser = await this.userRepository.create({
+            slug: user.slug,
             name: user.name,
             email: user.email,
             password: await this.hasher.hash(user.password),

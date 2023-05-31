@@ -33,12 +33,25 @@ export default class UserRepository implements UserRepositoryInterface {
             },
         });
 
-        return user;
+        return user as User;
+    }
+
+    async findBySlug(slug: string): Promise<User | null> {
+        console.log(slug);
+        
+        const user = await this.prisma.user.findFirst({
+            where: {
+                slug: slug
+            }
+        });
+
+        return user as any;
     }
 
     async create(user: User): Promise<User> {
         const newUser = await this.prisma.user.create({
             data: {
+                slug: user.slug as string,
                 name: user.name,
                 email: user.email,
                 password: user.password,
@@ -54,6 +67,7 @@ export default class UserRepository implements UserRepositoryInterface {
                 id: id,
             },
             data: {
+                slug: user.slug,
                 name: user.name,
                 email: user.email,
                 password: user.password,
